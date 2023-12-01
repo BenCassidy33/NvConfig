@@ -1,0 +1,46 @@
+require('custom.remaps')
+
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
+
+
+vim.opt.guicursor = ""
+vim.opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.cmd("set autoindent")
+vim.cmd("set nohlsearch")
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
+vim.opt.undofile = true
+
+vim.opt.wrap = true
+vim.opt.mouse = 'a'
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 10
+--vim.opt.signcoloumn = "yes"
+vim.opt.isfname:append("@-@")
+vim.opt.updatetime = 50
+vim.cmd("set clipboard+=unnamedplus")
+
+
+vim.api.nvim_create_autocmd( "FileType", {
+  pattern = {"markdown", "text"},
+  callback = function ()
+        vim.cmd("set linebreak")
+  end,
+})
+
+vim.keymap.set("n", "<leader>ps", function ()
+    local builtin = require('telescope.builtin')
+    builtin.grep_string({
+        search = vim.fn.input("Grep > ")
+    })
+end)
+
+
+vim.cmd[[imap <silent><script><expr> <C-a> copilot#Accept("\CR")]]
