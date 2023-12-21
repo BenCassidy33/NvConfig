@@ -28,7 +28,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.cmd("set clipboard+=unnamedplus")
 
-
 vim.api.nvim_create_autocmd( "FileType", {
   pattern = {"markdown", "text"},
   callback = function ()

@@ -38,10 +38,6 @@ local plugins = {
         end,
     },
     {
-        "tpope/vim-fugitive",
-        lazy = false,
-    },
-    {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
@@ -130,7 +126,17 @@ local plugins = {
         config = function ()
             require("custom.configs.tmux-navigator")
         end
-    }
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function ()
+            require("custom.configs.lazygit")
+        end,
+    },
 }
 
 return plugins

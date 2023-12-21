@@ -45,15 +45,4 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
---formatter
-
---[[
-
-this is some test text
-
-Sampson: Gregory, on my word, we shall not carry this scuffle any longer. The Montagues have dared to cross our path once too often. Let us show them our strength and teach them a lesson they shall not soon forget.
-Gregory:You speak true, Sampson. The time has come to put an end to their insolence. I am ready to draw my blade and fight for the honor of the Capulets. Let us provoke them and see how they respond.
-Sampson: Aye, let us provoke them indeed. But how shall we do so without risking our lives? Verily, we must be cunning in our approach.
-
-]]
---
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>", { silent = true })
