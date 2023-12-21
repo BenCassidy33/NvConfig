@@ -1,0 +1,27 @@
+you can use (count)(motion) with insert and typing.
+"." will repeat previous motion
+
+(search and replace)
+search entire text: 
+":%s/f/r/d" -> replaces every instance of f with r. will only search for one instance in each line
+":%s/f/r/g" -> g /global
+captures: 
+:%s/int \(.*\);/r/d
+
+int -> "int"
+\(.*\); -> any contigus text up to and including ";"
+
+note: the "\"s are a dilimiter to tell vim that the "(" and ")" are regex dilimiter instead of characters to search for
+
+so:
+    int x = 5; // do something 
+with the command: 
+    :%s/int \(.*\);/double y = 10;/
+will change to:
+    double y = 10; // do something
+you can also add "\1" to get the string that you captured with the regex
+
+with that the command would output:
+:'<,'>s/int \(.*\);/hello! \1
+
+int x = 5; // do something -> hello! x = 5 // do something

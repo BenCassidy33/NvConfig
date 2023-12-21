@@ -5,15 +5,12 @@ local util = require("lspconfig/util")
 local lspconfig = require("lspconfig")
 
 lspconfig.clangd.setup {
-    on_attach = function (client, bufnr)
+    on_attact = function (client, bufnr)
         client.server_capabilities.signatureHelpProvider = false
         on_attach(client, bufnr)
     end,
-
-    capabilities = capabilities,
+    capabilities = capabilities
 }
-
-lspconfig.asm_lsp.setup { }
 
 lspconfig.gopls.setup {
     on_attach = on_attach,
@@ -32,14 +29,6 @@ lspconfig.gopls.setup {
     }
 }
 
-local function organize_imports()
-    local params = {
-        command = "_typescript.organizeImports",
-        arguments = {vim.api.nvim_buf_get_name(0)}
-    }
-    vim.lsp.buf.execute_command(params)
-end
-
 lspconfig.tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -48,12 +37,6 @@ lspconfig.tsserver.setup {
             disableSuggestions = true,
         }
     },
-    commands = {
-        OrganizeImports = {
-            organize_imports,
-            description = "Organize Imports"
-        }
-    }
 }
 
 lspconfig.htmx.setup {

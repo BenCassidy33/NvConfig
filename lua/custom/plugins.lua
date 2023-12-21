@@ -111,10 +111,10 @@ local plugins = {
             return require "custom.configs.formatter"
         end
     },
-    {
-        "github/copilot.vim",
-        lazy = false,
-    },
+    -- {
+    --     "github/copilot.vim",
+    --     lazy = false,
+    -- },
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

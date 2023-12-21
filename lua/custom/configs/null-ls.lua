@@ -25,6 +25,8 @@ local opts = {
                 "graphql",
                 "handlebars",
             },
+            --https://prettier.io/docs/en/options.html
+            extra_args = {"--single-quote"}
         }),
         null_ls.builtins.formatting.stylua,
     },

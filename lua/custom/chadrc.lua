@@ -2,7 +2,7 @@ local M = {}
 
 M.ui = {
     transparency = true,
-    theme = "onedark"
+    theme = "tokyonight"
 }
 
 M.nvimtree = {
