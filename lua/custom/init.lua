@@ -36,9 +36,10 @@ vim.api.nvim_create_autocmd( "FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"typescript"},
+    pattern = {"typescript", "ts"},
     callback = function ()
-        vim.cmd("set tabstop=2")
+        vim.opt.shiftwidth=2
+        vim.opt.tabstop=2
     end
 })
 
