@@ -86,13 +86,13 @@ local plugins = {
             return M
         end
     },
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        ft = {"go", "typescript", "lua"},
-        opts = function ()
-            return require 'custom.configs.null-ls'
-        end,
-    },
+    -- {
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     ft = {"go", "typescript", "lua"},
+    --     opts = function ()
+    --         return require 'custom.configs.null-ls'
+    --     end,
+    -- },
     {
         "mfussenegger/nvim-lint",
         event = "VeryLazy",
@@ -137,6 +137,59 @@ local plugins = {
             require("custom.configs.lazygit")
         end,
     },
+    {
+        "nvimtools/none-ls.nvim",
+        event = "VeryLazy",
+        opts = function ()
+            return require "custom.configs.null-ls"
+        end
+    },
+    {
+        'windwp/nvim-ts-autotag',
+        ft = {"javascript", "typescript", "javascriptreact", "typescriptreact", "html", "svelte"},
+        config = function ()
+            require('nvim-ts-autotag').setup()
+        end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function ()
+            local opts = require "plugins.configs.treesitter"
+            opts.ensure_installed = {
+                "lua",
+                "javascript",
+                "typescript",
+                "tsx",
+                "go",
+                "rust",
+            }
+            return opts
+        end
+    },
+    {
+        "jakewvincent/mkdnflow.nvim",
+        config = function ()
+            require('custom.confign.mkdnflow')
+        end
+    },
+    {
+        "jbyuki/nabla.nvim"
+    },
+    {
+        "https://github.com/stevearc/oil.nvim",
+        lazy = false,
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function ()
+            require("custom.configs.oil")
+        end
+    },
+    {
+        "gelguy/wilder.nvim",
+        lazy = false,
+        config = function ()
+            require('custom.configs.wilder')
+        end,
+    }
 }
 
 return plugins

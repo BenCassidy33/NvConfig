@@ -3,7 +3,7 @@ require("custom.commands")
 
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
---vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -23,7 +23,7 @@ vim.opt.mouse = 'a'
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 10
 --vim.opt.signcoloumn = "yes"
-vim.opt.colorcolumn = "100"
+--vim.opt.colorcolumn = "100"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.cmd("set clipboard+=unnamedplus")
@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd( "FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"typescript", "ts"},
+    pattern = {"typescript", "ts", "js", "tsx", "jsx"},
     callback = function ()
         vim.opt.shiftwidth=2
         vim.opt.tabstop=2
@@ -51,3 +51,7 @@ vim.keymap.set("n", "<leader>ps", function ()
 end)
 
 vim.cmd[[imap <silent><script><expr> <C-a> copilot#Accept("\CR")]]
+
+vim.diagnostic.disable()
+
+--vim.keymap.set("n", "<leader>n", ":e ~/", { remap = true })

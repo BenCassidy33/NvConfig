@@ -2,8 +2,13 @@ local M = {}
 
 M.ui = {
     transparency = true,
-    theme = "tokyonight"
+    theme = "tokyonight",
+
+    tabufline = {
+        enabled= false
+    }
 }
+
 
 M.nvimtree = {
   git = {

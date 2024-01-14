@@ -1,52 +1,36 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilitiesls
 local util = require("lspconfig/util")
-
 local lspconfig = require("lspconfig")
 
-lspconfig.clangd.setup {
-    on_attact = function (client, bufnr)
-        client.server_capabilities.signatureHelpProvider = false
-        on_attach(client, bufnr)
-    end,
-    capabilities = capabilities
-}
+local servers = {"html", "gopls", "pyright", "jdtls", "eslint", "tsserver", "tailwindcss", "htmx", "grammarly", "dockerls", "taplo", "lua_ls", "docker_compose_language_service", "ocamllsp", "svelte", "clangd"}
 
-lspconfig.gopls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = {"gopls"},
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-    settings = {
-        gopls = {
-            completeUnimported = true,
-            usePlaceholders = false,
-            analyses = {
-                unusedparams = true,
-            }
-        }
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
     }
-}
+end
 
-lspconfig.tsserver.setup {
+lspconfig.prismals.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    init_options = {
-        preferences = {
-            disableSuggestions = true,
-        }
+
+    filetypes = { "prisma" },
+    settings = {
+        prisma = {
+            prismaFmtBinPath = '',
+        },
     },
+    root_dir = util.root_pattern('.git', 'package.json')
 }
 
-lspconfig.htmx.setup {
+lspconfig.sqlls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-}
 
-lspconfig.grammarly.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    cmd = { "sql-language-server", "up", "--method", "stdio" },
+    filetypes = { "sql", "mysql" },
 }
 
 vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end)

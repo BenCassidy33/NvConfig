@@ -1,34 +1,18 @@
 local null_ls = require("null-ls")
+local format = null_ls.builtins.formatting
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
     sources = {
-        null_ls.builtins.formatting.gofumpt,
-        null_ls.builtins.formatting.goimports_reviser,
-        null_ls.builtins.formatting.golines,
-        null_ls.builtins.formatting.prettier.with({
-            filetypes = {
-                "javascript",
-                "javascriptreact",
-                "typescript",
-                "typescriptreact",
-                "vue",
-                "css",
-                "scss",
-                "less",
-                "html",
-                "json",
-                "jsonc",
-                "yaml",
-                "markdown",
-                "markdown.mdx",
-                "graphql",
-                "handlebars",
-            },
-            --https://prettier.io/docs/en/options.html
-            extra_args = {"--single-quote"}
-        }),
-        null_ls.builtins.formatting.stylua,
+        format.gofumpt,
+        format.goimports_reviser,
+        format.golines,
+        format.lua_format,
+        format.prettier,
+        format.stylua,
+        -- format.mypy,
+        -- format.ruff,
+        format.clang_format,
     },
 
     on_attach = function(client, bufnr)

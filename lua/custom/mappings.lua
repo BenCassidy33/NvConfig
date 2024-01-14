@@ -13,7 +13,7 @@ M.dap = {
                 sidebar.open();
             end,
             "Open dubugging sidebar"
-        }
+        },
     }
 }
 
@@ -27,5 +27,15 @@ M.crates = {
         }
     }
 }
+
+M.wilder = {
+    n = {
+        ["<leader>n"] = {
+            ":e ~/"
+        }
+    }
+}
+
+
 
 return M
