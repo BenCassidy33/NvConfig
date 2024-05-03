@@ -1,4 +1,5 @@
 $a^2 + b^2 + c^2$
+$ sin(\alpha) + cos(\beta) $
 
 $(1 + a) \cdot (1 + a)$
 $\alpha + \beta$

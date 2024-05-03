@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilitiesls
 local util = require("lspconfig/util")
 local lspconfig = require("lspconfig")
 
-local servers = {"html", "gopls", "pyright", "jdtls", "eslint", "tsserver", "tailwindcss", "htmx", "grammarly", "dockerls", "taplo", "lua_ls", "docker_compose_language_service", "ocamllsp", "svelte", "clangd"}
+local servers = {"html", "gopls", "pyright", "jdtls", "eslint", "tsserver", "tailwindcss", "htmx", "dockerls", "taplo", "lua_ls", "docker_compose_language_service", "ocamllsp", "svelte", "clangd", "asm_lsp", "ols", "java_language_server"}
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -11,6 +11,14 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
+-- lspconfig.grammarly.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     cmd = { "grammarly-languageserver", "--stdio" },
+--     filetypes = { "markdown" },
+--     init_options = { clientId = "client_BaDkMgx4X19X9UxxYRCXZo " }
+-- }
 
 lspconfig.prismals.setup {
     on_attach = on_attach,

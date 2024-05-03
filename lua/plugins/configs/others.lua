@@ -2,7 +2,7 @@ local M = {}
 local utils = require "core.utils"
 
 M.blankline = {
-  indentLine_enabled = 1,
+  indentLine_enabled = 0,
   filetype_exclude = {
     "help",
     "terminal",
@@ -13,6 +13,7 @@ M.blankline = {
     "mason",
     "nvdash",
     "nvcheatsheet",
+    "dashboard",
     "",
   },
   buftype_exclude = { "terminal" },

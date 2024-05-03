@@ -1,4 +1,4 @@
-require("oil").setup({
+require("oil").setup {
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
   -- Set to false if you still want to use netrw.
   default_file_explorer = true,
@@ -6,9 +6,9 @@ require("oil").setup({
   -- See :help oil-columns
   columns = {
     "icon",
-    "permissions",
-    "size",
-    "mtime",
+    --"permissions",
+    --"size",
+    --"mtime",
   },
   -- Buffer-local options to use for oil buffers
   buf_options = {
@@ -27,7 +27,7 @@ require("oil").setup({
     concealcursor = "nvic",
   },
   -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-  delete_to_trash = false,
+  delete_to_trash = true,
   -- Skip the confirmation popup for simple operations
   skip_confirm_for_simple_edits = true,
   -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
@@ -38,7 +38,7 @@ require("oil").setup({
   cleanup_delay_ms = 2000,
   -- Set to true to autosave buffers that are updated with LSP willRenameFiles
   -- Set to "unmodified" to only save unmodified buffers
-  lsp_rename_autosave = false,
+  --lsp_rename_autosave = false,
   -- Constrain the cursor to the editable parts of the oil buffer
   -- Set to `false` to disable, or "name" to keep it on the file names
   constrain_cursor = "editable",
@@ -140,4 +140,4 @@ require("oil").setup({
       winblend = 0,
     },
   },
-})
+}

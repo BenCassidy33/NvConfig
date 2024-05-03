@@ -1,14 +1,13 @@
 local M = {}
 
 M.ui = {
-    transparency = true,
-    theme = "tokyonight",
+  transparency = true,
+  theme = "onedark",
 
-    tabufline = {
-        enabled= false
-    }
+  tabufline = {
+    enabled = false,
+  },
 }
-
 
 M.nvimtree = {
   git = {
@@ -27,7 +26,6 @@ M.nvimtree = {
   },
 }
 
-
-M.plugins = 'custom.plugins'
-M.mappings = require("custom.mappings")
+M.plugins = "custom.plugins"
+M.mappings = require "custom.mappings"
 return M
