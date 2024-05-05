@@ -7,19 +7,10 @@ local plugins = {
     lazy = false,
   },
   { "nvim-tree/nvim-web-devicons" },
-  { "christoomey/vim-tmux-navigator", lazy = false },
-  { "mbbill/undotree" },
   { "prettier/vim-prettier" },
   {
     "rust-lang/rust.vim",
     ft = { "rust" },
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-  {
-    "rust-lang/rust.vim",
-    ft = "rust",
     init = function()
       vim.g.rustfmt_autosave = 1
     end,
@@ -85,21 +76,8 @@ local plugins = {
     end,
   },
   {
-    "mfussenegger/nvim-lint",
-    event = "VeryLazy",
-    config = function()
-      require "custom.configs.lint"
-    end,
-  },
-  {
-    "mhartington/formatter.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return require "custom.configs.formatter"
-    end,
-  },
-  {
     "christoomey/vim-tmux-navigator",
+    lazy = false,
     config = function()
       require "custom.configs.tmux-navigator"
     end,
@@ -123,9 +101,9 @@ local plugins = {
   },
   {
     "windwp/nvim-ts-autotag",
-    ft = { "javascript", "typescript", "javascriptreact", "typescriptreact", "html", "svelte" },
+    ft = { "javascript", "typescript", "javascriptreact", "typescriptreact", "html" },
     config = function()
-      require("nvim-ts-autotag").setup()
+      require("nvim-ts-autotag").setup { autotag = { enable = true } }
     end,
   },
   {
@@ -142,9 +120,6 @@ local plugins = {
       }
       return opts
     end,
-  },
-  {
-    "jbyuki/nabla.nvim",
   },
   {
     "https://github.com/stevearc/oil.nvim",
@@ -175,26 +150,9 @@ local plugins = {
     --ft = { "go", "typescript", "javascript", "lua", "rust" },
   },
   {
-    "https://github.com/pocco81/true-zen.nvim",
-    ft = "markdown, docx",
-    config = function()
-      require "custom.configs.true-zen"
-    end,
-  },
-  {
     "https://github.com/ellisonleao/carbon-now.nvim",
-    lazy = false,
     config = function()
       require "custom.configs.carbon-now"
-    end,
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-      vim.g.mkdp_browser = "brave-browser"
     end,
   },
   {
@@ -210,6 +168,38 @@ local plugins = {
     config = function()
       require "custom.configs.treesitter-context"
     end,
+  },
+  {
+    "folke/zen-mode.nvim",
+    lazy = false,
+    opts = {
+      window = {
+        options = {
+          signcolumn = "no",
+          number = false,
+          relativenumber = false,
+        },
+      },
+      plugins = {
+        gitsigns = { enabled = false },
+        tmux = { enabled = false },
+      },
+    },
+  },
+  {
+    "https://github.com/epwalsh/obsidian.nvim",
+    ft = { "markdown" },
+    opts = require "custom.configs.obsidian",
+  },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+    "nvim-telescope/telescope.nvim",
+    "echasnovski/mini.pick",
+  },
+  {
+    "https://github.com/edgedb/edgedb-vim",
+    ft = { "edgeql" },
   },
 }
 

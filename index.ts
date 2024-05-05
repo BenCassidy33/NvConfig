@@ -1,1 +1,3 @@
-function main<T>(): void {}
+function main(): void {
+  console.log("");
+}

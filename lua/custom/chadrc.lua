@@ -1,11 +1,18 @@
+---@type ChadrcConfig
 local M = {}
 
 M.ui = {
   transparency = true,
   theme = "onedark",
+  hl_override = require "custom.highlights",
 
   tabufline = {
     enabled = false,
+  },
+
+  statusline = {
+    theme = "vscode_colored",
+    order = "vscode",
   },
 }
 
@@ -28,4 +35,5 @@ M.nvimtree = {
 
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
+
 return M

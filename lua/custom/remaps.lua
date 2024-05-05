@@ -41,17 +41,19 @@ vim.keymap.set("n", "<C-j>", "o<C-c>k", { remap = true })
 vim.keymap.set("n", "<C-k>", "O<C-c>j", { remap = true })
 
 vim.keymap.set("n", "!", ":! ", { remap = true })
-vim.keymap.set("n", "<leader>o", ":e ~/", { remap = true })
 
 vim.keymap.set("n", "<A-p>", function()
   require("nvterm.terminal").toggle "horizontal"
 end)
 
-vim.keymap.set("i", "<C-d>", "<C-x>:q")
-
-vim.keymap.set("n", "<leader>er", "<Esc>oif err != nil {<CR>}<Esc>O")
+vim.keymap.set("n", "<leader>err", "<Esc>oif err != nil {<CR>}<Esc>O")
 
 vim.keymap.set("n", "<leader>ls", function()
   vim.cmd "so"
   vim.cmd "Lazy sync"
 end)
+
+vim.keymap.set("i", "{", function()
+  print "test"
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Space><Space><Left>", true, true, true), "n", true)
+end, { noremap = true, silent = true })
