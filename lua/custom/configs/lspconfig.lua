@@ -10,7 +10,6 @@ local servers = {
   "jdtls",
   "eslint",
   "tsserver",
-  "tailwindcss",
   "htmx",
   "dockerls",
   "taplo",
@@ -22,6 +21,7 @@ local servers = {
   "asm_lsp",
   "ols",
   "java_language_server",
+  "zls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -31,13 +31,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- lspconfig.grammarly.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     cmd = { "grammarly-languageserver", "--stdio" },
---     filetypes = { "markdown" },
---     init_options = { clientId = "client_BaDkMgx4X19X9UxxYRCXZo " }
--- }
+lspconfig.grammarly.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "n", "run", "16", "/home/ben/.nvm/versions/node/v20.11.0/bin/grammarly-languageserver", "--stdio" },
+  filetypes = { "markdown" },
+  init_options = { clientId = "client_BaDkMgx4X19X9UxxYRCXZo " },
+}
 
 lspconfig.prismals.setup {
   on_attach = on_attach,
@@ -58,6 +58,24 @@ lspconfig.sqlls.setup {
 
   cmd = { "sql-language-server", "up", "--method", "stdio" },
   filetypes = { "sql", "mysql" },
+}
+
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+
+  filetypes = {
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte",
+    "vue",
+    "rust",
+  },
 }
 
 vim.keymap.set("n", "<leader>ca", function()

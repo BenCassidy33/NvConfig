@@ -2,9 +2,10 @@
 local M = {}
 
 M.ui = {
-  transparency = true,
+  transparency = false,
   theme = "onedark",
-  hl_override = require "custom.highlights",
+  hl_override = require("custom.highlights").hl_override,
+  changed_themes = require("custom.highlights").changed_themes,
 
   tabufline = {
     enabled = false,

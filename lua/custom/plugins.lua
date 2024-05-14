@@ -156,13 +156,6 @@ local plugins = {
     end,
   },
   {
-    "andrewferrier/wrapping.nvim",
-    ft = { "markdown" },
-    config = function()
-      require("wrapping").setup()
-    end,
-  },
-  {
     "https://github.com/nvim-treesitter/nvim-treesitter-context",
     lazy = false,
     config = function()
@@ -200,6 +193,14 @@ local plugins = {
   {
     "https://github.com/edgedb/edgedb-vim",
     ft = { "edgeql" },
+  },
+  {
+    "https://github.com/shortcuts/no-neck-pain.nvim",
+    ft = { "markdown", "text" },
+    cmd = "NoNeckPain",
+    cond = function()
+      return string.find(vim.fn.expand "%:p", "Notes") == nil
+    end,
   },
 }
 

@@ -2,70 +2,73 @@ require "custom.remaps"
 require "custom.commands"
 require "custom.neovide"
 
-vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
+local opt = vim.opt
 
---vim.opt.guicursor = ""
-vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.cmd "set autoindent"
-vim.cmd "set nohlsearch"
+function options(opts)
+  for k, v in ipairs(opts) do
+    opt[k] = v
+  end
+end
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv "HOME" .. "/.vim.undodir"
-vim.opt.undofile = true
+--local options = require "options"
+--options(options)
 
-vim.opt.wrap = false
-vim.opt.mouse = "a"
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 10
---vim.opt.signcoloumn = "yes"
---vim.opt.colorcolumn = "80"
-vim.opt.isfname:append "@-@"
-vim.opt.updatetime = 50
+opt.relativenumber = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
+opt.pumheight = 10
+opt.autoindent = true
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv "HOME" .. "/.vim.undodir"
+opt.undofile = true
+opt.wrap = false
+opt.mouse = "a"
+opt.termguicolors = true
+opt.scrolloff = 10
+opt.isfname:append "@-@"
+opt.updatetime = 50
+
 vim.cmd "set clipboard+=unnamedplus"
+vim.cmd "set nohlsearch"
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "text" },
   callback = function()
-    vim.opt.conceallevel = 2
-    vim.opt.spelllang = "en_us"
-    vim.opt.spell = true
+    opt.conceallevel = 2
+    opt.spelllang = "en_us"
+    opt.spell = true
+    opt.wrap = true
+    opt.shiftwidth = 4
+    opt.tabstop = 2
+
+    if string.find(vim.fn.expand "%:p", "Notes") then
+      vim.wo.wrap = true
+      vim.wo.linebreak = true
+      vim.cmd "NoNeckPain"
+    end
   end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "typescript", "ts", "js", "tsx", "jsx", "lua" },
   callback = function()
-    vim.opt.shiftwidth = 2
-    vim.opt.tabstop = 2
+    opt.shiftwidth = 2
+    opt.tabstop = 2
   end,
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "asm" },
-  callback = function()
-    vim.cmd "set ft=nasm"
-  end,
-})
-
-vim.keymap.set("n", "<leader>ps", function()
-  local builtin = require "telescope.builtin"
-  builtin.grep_string {
-    search = vim.fn.input "Grep > ",
-  }
-end)
 
 vim.cmd [[imap <silent><script><expr> <C-a> copilot#Accept("\CR")]]
 
 if vim.g.neovide then
-  vim.o.guifont = "Iosevka Term:h14"
+  vim.g.transparency = false
 
-  vim.g.neovide_scale_factor = 0.70
+  vim.o.guifont = "JetBrains Mono NL Medium:h14"
+
+  vim.g.neovide_scale_factor = 1.00
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + delta
   end
