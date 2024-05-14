@@ -8,3 +8,4 @@ after
 pack/
 node_modules/
 **/.DS_Store
+lua/custom/configs/sqls_setup.lua

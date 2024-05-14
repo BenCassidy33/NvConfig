@@ -49,6 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.wo.wrap = true
       vim.wo.linebreak = true
       vim.cmd "NoNeckPain"
+      vim.cmd "Copilot disable"
     end
   end,
 })

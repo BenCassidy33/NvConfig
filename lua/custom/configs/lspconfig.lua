@@ -52,14 +52,6 @@ lspconfig.prismals.setup {
   root_dir = util.root_pattern(".git", "package.json"),
 }
 
-lspconfig.sqlls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-
-  cmd = { "sql-language-server", "up", "--method", "stdio" },
-  filetypes = { "sql", "mysql" },
-}
-
 lspconfig.tailwindcss.setup {
   on_attach = on_attach,
   capabilities = capabilities,

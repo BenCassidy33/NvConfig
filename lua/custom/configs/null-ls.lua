@@ -1,16 +1,20 @@
 local null_ls = require "null-ls"
-local formating = null_ls.builtins.formatting
+local formatting = null_ls.builtins.formatting
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
   sources = {
-    formating.gofumpt,
-    formating.goimports,
-    formating.prettier,
-    formating.stylua,
-    formating.clang_format,
-    formating.djlint,
-    formating.rustywind,
+    formatting.gofumpt,
+    formatting.goimports,
+    formatting.prettier,
+    formatting.stylua,
+    formatting.clang_format,
+    formatting.djlint,
+    formatting.rustywind,
+    formatting.sqlfluff.with {
+      extra_args = { "--dialect", "postgres" },
+    },
+    formatting.google_java_format,
   },
 
   on_attach = function(client, bufnr)
