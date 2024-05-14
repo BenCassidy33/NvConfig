@@ -3,6 +3,8 @@ local capabilities = require("plugins.configs.lspconfig").capabilitiesls
 local util = require "lspconfig/util"
 local lspconfig = require "lspconfig"
 
+--require("custom.configs.sqls_setup").RunSetup(lspconfig, on_attach, capabilities)
+
 local servers = {
   "html",
   "gopls",
@@ -68,6 +70,12 @@ lspconfig.tailwindcss.setup {
     "vue",
     "rust",
   },
+}
+
+lspconfig.sqls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "sql" },
 }
 
 vim.keymap.set("n", "<leader>ca", function()

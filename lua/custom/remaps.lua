@@ -1,41 +1,40 @@
 vim.g.mapleader = " "
-vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- move lines up or down
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+local mappings = {
+  { "i", "jj", "<Esc>", { noremap = true, silent = true } },
+  { "i", "<C-c>", "<Esc>" },
+  { "v", "K", ":m '<-2<CR>gv=gv" },
+  { "v", "J", ":m '>+1<CR>gv=gv" },
+  { "n", "<C-d>", "<C-d>zz" },
+  { "n", "<C-u>", "<C-u>zz" },
+  { "n", "n", "nzzzv" },
+  { "n", "N", "Nzzzv" },
+  { "v", "x", '"_d' },
+  { "v", "p", [["_dP]] },
+  { { "n", "v" }, "<leader>y", [["+y]] },
+  { "n", "<leader>Y", [["+Y]] },
+  { "n", "<leader>gg", "<cmd>LazyGit<CR>", { silent = true } },
+  { "n", "-", "<CMD>Oil<CR>", { remap = true } },
+  { "n", "<C-j>", "o<C-c>k", { remap = true } },
+  { "n", "<C-k>", "O<C-c>j", { remap = true } },
+  { "n", "!", ":! ", { remap = true } },
+  { "n", "<leader>go", "<Esc>oif err != nil {<CR>}<Esc>O" },
+  { "i", "<C-H>", "<C-c>bdiwxi" },
+  { "n", "t", "`", { remap = true } },
+  {
+    { "n", "i" },
+    "<A-p>",
+    function()
+      require("nvterm.terminal").toggle "horizontal"
+    end,
+  },
+  { "n", "<leader>bp", "<CMD>bprev<CR>", { silent = true, remap = true } },
+  { "n", "<leader>bn", "<CMD>bnext<CR>", { silent = true } },
+  { "n", "<leader>bc", "<CMD>enew<CR>", { silent = true } },
+  { "n", "<leader>bd", "<CMD>bdelete<CR>", { silent = true } },
+  { "n", "<leader>bf", "<CMD>Telescope buffers<CR>", { silent = true } },
+}
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- paste to void regester
---vim.keymap.set("x", "<leader>v", "\"_dP")
-
--- delete to void regester
---vim.keymap.set("n", "x", '"_d')
-vim.keymap.set("v", "x", '"_d')
-vim.keymap.set("v", "p", [["_dP]])
-
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>", { silent = true })
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { remap = true })
-
--- New Lines and Such
-vim.keymap.set("n", "<C-j>", "o<C-c>k", { remap = true })
-vim.keymap.set("n", "<C-k>", "O<C-c>j", { remap = true })
-
-vim.keymap.set("n", "!", ":! ", { remap = true })
-
-vim.keymap.set({ "n", "i" }, "<A-p>", function()
-  require("nvterm.terminal").toggle "horizontal"
-end)
-
-vim.keymap.set("n", "<leader>go", "<Esc>oif err != nil {<CR>}<Esc>O")
-
-vim.keymap.set("i", "<C-H>", "<C-c>bdiwxi")
-vim.keymap.set("n", "t", "`", { remap = true })
--- Ctrl + Backspace
+for _, v in ipairs(mappings) do
+  vim.keymap.set(v[1], v[2], v[3], v[4])
+end

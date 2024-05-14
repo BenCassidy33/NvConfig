@@ -218,6 +218,15 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
+  { "https://github.com/kristijanhusak/vim-dadbod-completion" },
+  {
+    "https://github.com/nvim-lualine/lualine.nvim",
+    lazy = false,
+    config = function()
+      return require "custom.configs.lualine"
+    end,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }
 
 return plugins
