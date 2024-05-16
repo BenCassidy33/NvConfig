@@ -19,4 +19,10 @@ M.set_nvim_options = function(opts)
   end
 end
 
+M.set_mappings = function(mappings)
+  for _, v in ipairs(mappings) do
+    vim.keymap.set(v[1], v[2], v[3], v[4])
+  end
+end
+
 return M

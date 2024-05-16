@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-local mappings = {
+require("custom.utils").set_mappings {
   { "i", "jj", "<Esc>", { noremap = true, silent = true } },
   { "i", "<C-c>", "<Esc>" },
   { "v", "K", ":m '<-2<CR>gv=gv" },
@@ -33,9 +33,7 @@ local mappings = {
   { "n", "<leader>bc", "<CMD>enew<CR>", { silent = true } },
   { "n", "<leader>bd", "<CMD>bdelete<CR>", { silent = true } },
   { "n", "<leader>bf", "<CMD>Telescope buffers<CR>", { silent = true } },
-  --{ "n", ":", "<CMD>FineCmdline<CR>", { silent = true } },
-}
 
-for _, v in ipairs(mappings) do
-  vim.keymap.set(v[1], v[2], v[3], v[4])
-end
+  { "n", "<leader>co", "<CMD>Telescope git_commits<CR>", { silent = true } },
+  { "n", "<leader>br", "<CMD>Telescope git_branches<CR>", { silent = true } },
+}
