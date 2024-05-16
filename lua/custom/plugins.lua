@@ -105,6 +105,7 @@ local plugins = {
   -- },
   {
     "https://github.com/tpope/vim-fugitive",
+    lazy = false,
   },
   {
     "nvimtools/none-ls.nvim",
