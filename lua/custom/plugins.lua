@@ -48,6 +48,17 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
+    init = function()
+      require("core.utils").load_mappings "dap"
+      vim.g.dap_virtual_text = true
+    end,
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    lazy = false,
+    config = function(_, opts)
+      require("nvim-dap-virtual-text").setup()
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
@@ -183,6 +194,7 @@ local plugins = {
     "https://github.com/epwalsh/obsidian.nvim",
     ft = { "markdown" },
     opts = require "custom.configs.obsidian",
+    event = "VeryLazy",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -198,8 +210,8 @@ local plugins = {
     "https://github.com/shortcuts/no-neck-pain.nvim",
     ft = { "markdown", "text" },
     cmd = "NoNeckPain",
-    cond = function()
-      return string.find(vim.fn.expand "%:p", "Notes") == nil
+    lazy = function()
+      return string.find(vim.fn.expand "%:p:h", "Notes") == nil
     end,
   },
   {

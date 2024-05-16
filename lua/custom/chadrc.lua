@@ -2,8 +2,8 @@
 local M = {}
 
 M.ui = {
-  transparency = false,
-  theme = "onedark",
+  transparency = true,
+  theme = "catppuccin",
   hl_override = require("custom.highlights").hl_override,
   changed_themes = require("custom.highlights").changed_themes,
 

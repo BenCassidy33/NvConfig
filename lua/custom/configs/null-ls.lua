@@ -15,6 +15,7 @@ local opts = {
       extra_args = { "--dialect", "postgres" },
     },
     formatting.google_java_format,
+    formatting.ocamlformat,
   },
 
   on_attach = function(client, bufnr)

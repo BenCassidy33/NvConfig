@@ -1,11 +1,24 @@
+local theme = require("custom.chadrc").ui.theme
+
+-- @param theme string
+local determine_theme = function(theme)
+  if theme == "gruvbox" then
+    return "gruvbox_dark"
+  else
+    if theme == "onedark" then
+      return "ayu_mirage"
+    end
+  end
+end
+
 require("lualine").setup {
   options = {
     icons_enabled = true,
-    theme = "auto",
+    theme = "ayu_mirage",
     --component_separators = { left = "", right = "" },
     component_separators = { left = "", right = "|" },
     --section_separators = { left = "", right = "" },
-    section_separators = { left = " ", right = " " },
+    section_separators = { left = " ", right = " " },
     disabled_filetypes = {
       statusline = {},
       winbar = {},

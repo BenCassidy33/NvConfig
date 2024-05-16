@@ -33,6 +33,7 @@ local mappings = {
   { "n", "<leader>bc", "<CMD>enew<CR>", { silent = true } },
   { "n", "<leader>bd", "<CMD>bdelete<CR>", { silent = true } },
   { "n", "<leader>bf", "<CMD>Telescope buffers<CR>", { silent = true } },
+  --{ "n", ":", "<CMD>FineCmdline<CR>", { silent = true } },
 }
 
 for _, v in ipairs(mappings) do

@@ -9,6 +9,7 @@ local servers = {
   "html",
   "gopls",
   "pyright",
+  "ocamllsp",
   "jdtls",
   "eslint",
   "tsserver",
@@ -22,6 +23,7 @@ local servers = {
   "clangd",
   "asm_lsp",
   "ols",
+  "sqls",
   "java_language_server",
   "zls",
 }

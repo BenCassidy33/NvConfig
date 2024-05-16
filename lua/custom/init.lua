@@ -2,13 +2,9 @@ require "custom.remaps"
 require "custom.commands"
 require "custom.neovide"
 
-local opt = vim.opt
+local utils = require "custom.utils"
 
-function options(opts)
-  for k, v in ipairs(opts) do
-    opt[k] = v
-  end
-end
+local opt = vim.opt
 
 --local options = require "options"
 --options(options)
@@ -92,6 +88,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   },
 })
 
--- comment if want to use nvchad themes
-
---vim.keymap.set("n", "<leader>n", ":e ~/", { remap = true })
+local plugins = {
+  notes = {
+    "obsidian.nvim",
+    "no-neck-pain.nvim",
+  },
+}

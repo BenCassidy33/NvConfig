@@ -2,11 +2,12 @@ require("fine-cmdline").setup {
   cmdline = {
     enable_keymaps = true,
     smart_history = true,
-    prompt = "Cmd ➜ ",
+    --prompt = "Cmd: ➜ ",
+    prompt = ":",
   },
   popup = {
     position = {
-      row = "10%",
+      row = "50%",
       col = "50%",
     },
     size = {
