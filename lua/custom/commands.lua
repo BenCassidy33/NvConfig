@@ -6,6 +6,10 @@ vim.api.nvim_create_user_command("Open", function()
   }
 end, {})
 
+vim.api.nvim_create_user_command("G", function()
+  vim.cmd "vertical Git"
+end, {})
+
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = { "markdown", "text" },
 --   callback = function()
