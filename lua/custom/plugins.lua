@@ -93,15 +93,18 @@ local plugins = {
       require "custom.configs.tmux-navigator"
     end,
   },
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   config = function()
+  --     require "custom.configs.lazygit"
+  --   end,
+  -- },
   {
-    "kdheepak/lazygit.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require "custom.configs.lazygit"
-    end,
+    "https://github.com/tpope/vim-fugitive",
   },
   {
     "nvimtools/none-ls.nvim",
