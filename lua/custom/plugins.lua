@@ -159,11 +159,11 @@ local plugins = {
     end,
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
-  {
-    "https://github.com/github/copilot.vim",
-    lazy = false,
-    --ft = { "go", "typescript", "javascript", "lua", "rust" },
-  },
+  -- {
+  --   "https://github.com/github/copilot.vim",
+  --   lazy = false,
+  --   --ft = { "go", "typescript", "javascript", "lua", "rust" },
+  -- },
   {
     "https://github.com/ellisonleao/carbon-now.nvim",
     config = function()

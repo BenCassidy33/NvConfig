@@ -20,7 +20,7 @@ local servers = {
   "docker_compose_language_service",
   "ocamllsp",
   "svelte",
-  "clangd",
+  --"clangd",
   "asm_lsp",
   "ols",
   "sqls",
@@ -71,6 +71,14 @@ lspconfig.tailwindcss.setup {
     "svelte",
     "vue",
     "rust",
+  },
+}
+
+lspconfig.clangd.setup {
+  capabilities = capabilities,
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
   },
 }
 
